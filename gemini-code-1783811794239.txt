@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAPWELWOL // Cyber Y2K Zone</title>
+    
+    <!-- Google Fonts untuk estetika Retro-Modern & Monospace -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Syne:wght@700;800&family=VT323&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk ikon retro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- TEMA & VARIABEL WARNA (Y2K / NEOBRUTALISM) --- */
+        :root {
+            --bg-grid: #f9d5e5;
+            --primary-pink: #ff007f;
+            --cyber-cyan: #00f3ff;
+            --matrix-green: #39ff14;
+            --retro-yellow: #fff200;
+            --dark-border: #121212;
+            --window-white: #ffffff;
+            --font-pixel: 'VT323', monospace;
+            --font-modern: 'Space Grotesk', sans-serif;
+            --font-heading: 'Syne', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fce4ec;
+            /* Pola Latar Belakang Grid Y2K */
+            background-image: 
+                linear-gradient(rgba(18, 18, 18, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(18, 18, 18, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: var(--font-modern);
+            color: var(--dark-border);
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* --- MARQUEE UTAMA (NEWS TICKER JADUL) --- */
+        .news-ticker {
+            background: var(--retro-yellow);
+            border: 4px solid var(--dark-border);
+            padding: 6px;
+            font-family: var(--font-pixel);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            box-shadow: 6px 6px 0px var(--dark-border);
+            margin-bottom: 25px;
+            transform: rotate(-0.5deg);
+        }
+
+        .news-ticker span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* --- CONTAINER UTAMA --- */
+        .app-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- LOGO / HEADER UTAMA --- */
+        .main-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logo-box {
+            background: var(--cyber-cyan);
+            border: 5px solid var(--dark-border);
+            display: inline-block;
+            padding: 15px 40px;
+            transform: skew(-5deg) rotate(-2deg);
+            box-shadow: 10px 10px 0px var(--primary-pink);
+            position: relative;
+        }
+
+        .logo-box h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--dark-border);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            -webkit-text-stroke: 1.5px var(--dark-border);
+            text-shadow: 4px 4px 0px #fff;
+        }
+
+        .logo-sub {
+            font-family: var(--font-pixel);
+            font-size: 1.8rem;
+            margin-top: 10px;
+            background: var(--dark-border);
+            color: var(--matrix-green);
+            display: inline-block;
+            padding: 3px 15px;
+            transform: rotate(1deg);
+        }
+
+        /* --- RETRO MP3 PLAYER (WIDGET DEKORATIF) --- */
+        .retro-player {
+            background: #fff;
+            border: 4px solid var(--dark-border);
+            box-shadow: 5px 5px 0px var(--dark-border);
+            max-width: 320px;
+            margin: 0 auto 30px auto;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: rotate(1deg);
+        }
+
+        .player-disc {
+            width: 50px;
+            height: 50px;
+            background: var(--dark-border);
+            border-radius: 50%;
+            border: 4px solid var(--primary-pink);
+            animation: spin 3s linear infinite paused;
+        }
+
+        .player-disc.playing {
+            animation-play-state: running;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .player-controls {
+            flex-grow: 1;
+        }
+
+        .player-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .player-btn {
+            background: var(--retro-yellow);
+            border: 2px solid var(--dark-border);
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px var(--dark-border);
+        }
+
+        .player-btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px var(--dark-border);
+        }
+
+        /* --- RESPONSIVE MENU TABS --- */
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-card {
+            background: var(--retro-yellow);
+            border: 4px solid var(--dark-border);
+            box-shadow: 6px 6px 0px var(--dark-border);
+            color: var(--dark-border);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 8px 8px 0px var(--dark-border);
+            background: var(--window-white);
+        }
+
+        .nav-card:active, .nav-card.active {
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0px var(--dark-border);
+            background: var(--primary-pink);
+            color: #fff;
+        }
+
+        /* Nav individual colors for Y2K style */
+        .nav-card:nth-child(1) { background-color: var(--primary-pink); color: white; }
+        .nav-card:nth-child(2) { background-color: var(--cyber-cyan); }
+        .nav-card:nth-child(3) { background-color: var(--matrix-green); }
+        .nav-card:nth-child(4) { background-color: var(--retro-yellow); }
+
+        /* --- WINDOWS PANEL (OS SIMULATION STYLE) --- */
+        .y2k-window {
+            background: var(--window-white);
+            border: 5px solid var(--dark-border);
+            box-shadow: 10px 10px 0px var(--dark-border);
+            margin-bottom: 40px;
+            display: none;
+            overflow: hidden;
+        }
+
+        .y2k-window.active {
+            display: block;
+            animation: scaleUp 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.96); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Window Header Bar */
+        .window-bar {
+            background: var(--dark-border);
+            color: #fff;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--dark-border);
+        }
+
+        .window-title {
+            font-family: var(--font-pixel);
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .ctrl-btn {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+        .ctrl-close { background-color: #ff5f56; }
+        .ctrl-minimize { background-color: #ffbd2e; }
+        .ctrl-maximize { background-color: #27c93f; }
+
+        /* Window Inner Content Body */
+        .window-body {
+            padding: 30px;
+        }
+
+        /* --- INPUT / UPLOADER FORM STYLE --- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .control-panel {
+            background: #fdf5e6;
+            border: 3px solid var(--dark-border);
+            padding: 20px;
+            box-shadow: 4px 4px 0px var(--dark-border);
+        }
+
+        .control-panel h3 {
+            font-family: var(--font-heading);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 3px dashed var(--dark-border);
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            border: 3px solid var(--dark-border);
+            padding: 10px;
+            font-family: var(--font-modern);
+            font-size: 1rem;
+            outline: none;
+            box-shadow: inset 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-pink);
+            background: #fffdf0;
+        }
+
+        /* File uploader button design */
+        .file-upload-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-upload {
+            border: 3px solid var(--dark-border);
+            color: var(--dark-border);
+            background-color: var(--cyber-cyan);
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px var(--dark-border);
+        }
+
+        .btn-upload:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px var(--dark-border);
+        }
+
+        .file-upload-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .preview-thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            min-height: 50px;
+            border: 2px dashed var(--dark-border);
+            padding: 10px;
+            background: #fff;
+        }
+
+        .thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 2px solid var(--dark-border);
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--matrix-green);
+            color: var(--dark-border);
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 12px;
+            border: 3px solid var(--dark-border);
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--dark-border);
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: #fff;
+        }
+
+        .btn-submit:active {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0px var(--dark-border);
+        }
+
+        /* --- DYNAMIC GALLERY GRID --- */
+        .content-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .item-card {
+            background: var(--window-white);
+            border: 4px solid var(--dark-border);
+            box-shadow: 6px 6px 0px var(--dark-border);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            animation: cardPop 0.3s ease;
+        }
+
+        @keyframes cardPop {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .card-image-box {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border: 3px solid var(--dark-border);
+            overflow: hidden;
+            margin-bottom: 12px;
+            background: #eee;
+        }
+
+        .card-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tag-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--retro-yellow);
+            color: var(--dark-border);
+            border: 2px solid var(--dark-border);
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+            word-wrap: break-word;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            word-wrap: break-word;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px dashed var(--dark-border);
+            padding-top: 10px;
+        }
+
+        .card-time {
+            font-family: var(--font-pixel);
+            font-size: 1rem;
+        }
+
+        .btn-delete {
+            background: #ff5f56;
+            color: white;
+            border: 2px solid var(--dark-border);
+            padding: 4px 10px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px var(--dark-border);
+        }
+
+        .btn-delete:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px var(--dark-border);
+        }
+
+        /* --- NOTIFICATION WINDOW (ALERT BOX) --- */
+        .notification-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--matrix-green);
+            border: 4px solid var(--dark-border);
+            box-shadow: 6px 6px 0px var(--dark-border);
+            padding: 15px 25px;
+            font-weight: bold;
+            display: none;
+            z-index: 999;
+            align-items: center;
+            gap: 15px;
+            animation: slideInLeft 0.3s ease;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 850px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .navigation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .logo-box h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navigation-grid {
+                grid-template-columns: 1fr;
+            }
+            .logo-box h1 {
+                font-size: 2.2rem;
+            }
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NOTIFIKASI POPUP -->
+    <div class="notification-popup" id="sysNotif">
+        <i class="fa-solid fa-circle-check" style="font-size: 1.5rem;"></i>
+        <span id="notifMsg">Berhasil menambahkan konten baru!</span>
+    </div>
+
+    <div class="app-container">
+
+        <!-- TIMELINE NEWS TICKER -->
+        <div class="news-ticker">
+            <span>+++ WELCOME TO RAPWELWOL CYBER NET // UPLOAD MULTIPLE PHOTOS TO SHAPE THIS RETRO WEB // UPDATE V1.04 HAS LOADED PERSISTENT STORAGE CAPABILITIES +++</span>
+        </div>
+
+        <!-- LOGO UTAMA -->
+        <div class="main-header">
+            <div class="logo-box">
+                <h1>rapwelwol</h1>
+            </div>
+            <br>
+            <div class="logo-sub">⚡ EST. 2026 // ULTRA MODERN Y2K PORTAL ⚡</div>
+        </div>
+
+        <!-- MINI RETRO MUSIC PLAYER -->
+        <div class="retro-player">
+            <div class="player-disc" id="disc"></div>
+            <div class="player-controls">
+                <div class="player-title" id="songTitle">Now Streaming: LoFi_90s_Wave.mp3</div>
+                <button class="player-btn" onclick="togglePlay()"><i class="fa-solid fa-play"></i> PLAY/STOP</button>
+            </div>
+        </div>
+
+        <!-- SISTEM NAVIGATION TABS (SANGAT RESPONSIF) -->
+        <nav class="navigation-grid">
+            <div class="nav-card active" onclick="openWindow('info-panel', this)">
+                <i class="fa-solid fa-terminal"></i> Info Hub
+            </div>
+            <div class="nav-card" onclick="openWindow('menu-panel', this)">
+                <i class="fa-solid fa-pizza-slice"></i> Retro Menu
+            </div>
+            <div class="nav-card" onclick="openWindow('upload-panel', this)">
+                <i class="fa-solid fa-folder-plus"></i> Add Photos
+            </div>
+            <div class="nav-card" onclick="openWindow('gallery-panel', this)">
+                <i class="fa-solid fa-images"></i> Cyber Gallery
+            </div>
+        </nav>
+
+        <!-- ================= PANEL 1: INFO PORTAL ================= -->
+        <section id="info-panel" class="y2k-window active">
+            <div class="window-bar">
+                <div class="window-title"><i class="fa-solid fa-circle-info"></i> system_info.log</div>
+                <div class="window-controls">
+                    <div class="ctrl-btn ctrl-minimize"></div>
+                    <div class="ctrl-btn ctrl-maximize"></div>
+                    <div class="ctrl-btn ctrl-close"></div>
+                </div>
+            </div>
+            <div class="window-body">
+                <h2 style="font-family: var(--font-heading); margin-bottom: 15px; text-transform: uppercase;">Selamat Datang di RAPWELWOL!</h2>
+                <p style="line-height: 1.6; margin-bottom: 20px; font-size: 1.1rem;">
+                    RAPWELWOL adalah persembahan web eksperimental bertema <strong>Retro Modern &amp; Y2K</strong>. Di sini, gaya visual brutalism bertemu dengan fleksibilitas web modern. Kami membawa kamu kembali ke masa keemasan PC dekade awal 2000 dengan sistem windowing interaktif.
+                </p>
+                <div class="control-panel" style="background-color: var(--cyber-cyan); border-radius: 0;">
+                    <h3 style="border-bottom: 3px solid var(--dark-border);"><i class="fa-solid fa-wand-magic-sparkles"></i> Fitur Kreatif Tambah Foto</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.5; color: var(--dark-border); margin-top: 10px;">
+                        Kamu bisa langsung mengunggah <strong>banyak foto sekaligus (multi-upload)</strong> untuk dipajang di halaman web ini. Foto yang kamu masukkan bisa diletakkan sebagai menu makanan baru di tab <strong>Retro Menu</strong> atau karya seni visual di tab <strong>Cyber Gallery</strong>. Semua foto akan disimpan dengan aman di memori browser kamu!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PANEL 2: RETRO MENU ================= -->
+        <section id="menu-panel" class="y2k-window">
+            <div class="window-bar">
+                <div class="window-title"><i class="fa-solid fa-utensils"></i> culinary_list.json</div>
+                <div class="window-controls">
+                    <div class="ctrl-btn ctrl-minimize"></div>
+                    <div class="ctrl-btn ctrl-maximize"></div>
+                    <div class="ctrl-btn ctrl-close"></div>
+                </div>
+            </div>
+            <div class="window-body">
+                <h2 style="font-family: var(--font-heading); margin-bottom: 25px; text-transform: uppercase;">Daftar Menu Cyber Bistro</h2>
+                <div class="content-showcase" id="menuShowcase">
+                    <!-- Default Items -->
+                    <div class="item-card">
+                        <div class="card-image-box">
+                            <span class="tag-badge">MAKANAN</span>
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60" alt="Pixel Pizza">
+                        </div>
+                        <h3 class="card-title">Mega-Byte Pizza</h3>
+                        <p class="card-desc">Pizza tipis garing dengan lelehan keju mozzarella setebal 8-bit, lengkap dengan pepperoni laser.</p>
+                        <div class="card-actions">
+                            <span class="card-time">Rp 45.000</span>
+                        </div>
+                    </div>
+                    <div class="item-card">
+                        <div class="card-image-box">
+                            <span class="tag-badge">MINUMAN</span>
+                            <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&auto=format&fit=crop&q=60" alt="Cyber Soda">
+                        </div>
+                        <h3 class="card-title">Liquid Neon Soda</h3>
+                        <p class="card-desc">Soda biru menyala rasa blueberry asam dengan taburan glitter gula yang bisa menyala di dalam kegelapan.</p>
+                        <div class="card-actions">
+                            <span class="card-time">Rp 25.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PANEL 3: REQUEST & ADD PHOTOS ================= -->
+        <section id="upload-panel" class="y2k-window">
+            <div class="window-bar">
+                <div class="window-title"><i class="fa-solid fa-arrow-up-from-bracket"></i> data_injector.exe</div>
+                <div class="window-controls">
+                    <div class="ctrl-btn ctrl-minimize"></div>
+                    <div class="ctrl-btn ctrl-maximize"></div>
+                    <div class="ctrl-btn ctrl-close"></div>
+                </div>
+            </div>
+            <div class="window-body">
+                <h2 style="font-family: var(--font-heading); margin-bottom: 10px; text-transform: uppercase;">Multi-Photo Injector</h2>
+                <p style="margin-bottom: 25px;">Tambahkan foto atau request menu/galeri baru di website ini. Kamu bisa mengupload beberapa file foto sekaligus secara bersamaan!</p>
+                
+                <div class="form-grid">
+                    <!-- Sisi Kiri: Form Pengisian -->
+                    <form id="uploadForm" onsubmit="handleFormSubmit(event)">
+                        <div class="control-panel">
+                            <h3><i class="fa-solid fa-file-pen"></i> Info & Metadata</h3>
+                            
+                            <div class="form-group">
+                                <label for="photoTitle">Nama Menu / Judul Karya:</label>
+                                <input type="text" id="photoTitle" class="form-input" placeholder="Contoh: Burger Retro Pixel" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="photoDesc">Keterangan / Deskripsi Singkat:</label>
+                                <textarea id="photoDesc" class="form-input" style="height: 80px; resize: none;" placeholder="Beri info menarik tentang foto yang diunggah..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="photoCategory">Tujuan Penempatan Konten:</label>
+                                <select id="photoCategory" class="form-input">
+                                    <option value="makanan">Retro Menu (Jenis Makanan)</option>
+                                    <option value="minuman">Retro Menu (Jenis Minuman)</option>
+                                    <option value="galeri">Cyber Gallery</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Sisi Kanan: Uploader & Preview -->
+                    <div class="control-panel" style="background: #eef5ff;">
+                        <h3><i class="fa-solid fa-file-image"></i> File Media</h3>
+                        <div class="form-group">
+                            <label>Unggah Gambar (Bisa pilih beberapa sekaligus):</label>
+                            <div class="file-upload-wrapper">
+                                <div class="btn-upload"><i class="fa-solid fa-file-export"></i> PILIH BEBERAPA FOTO</div>
+                                <input type="file" id="imageFiles" accept="image/*" multiple onchange="previewImages(event)" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Review Foto yang Dipilih:</label>
+                            <div class="preview-thumbnails" id="previewContainer">
+                                <span style="color:#888; font-size:0.85rem;">Belum ada foto terpilih...</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" form="uploadForm" class="btn-submit">💾 INJECT FOTO KE WEBSITE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PANEL 4: CYBER GALLERY ================= -->
+        <section id="gallery-panel" class="y2k-window">
+            <div class="window-bar">
+                <div class="window-title"><i class="fa-solid fa-folder-open"></i> asset_gallery.bat</div>
+                <div class="window-controls">
+                    <div class="ctrl-btn ctrl-minimize"></div>
+                    <div class="ctrl-btn ctrl-maximize"></div>
+                    <div class="ctrl-btn ctrl-close"></div>
+                </div>
+            </div>
+            <div class="window-body">
+                <h2 style="font-family: var(--font-heading); margin-bottom: 25px; text-transform: uppercase;">Galeri Seni Cyberpunk Y2K</h2>
+                <div class="content-showcase" id="galleryShowcase">
+                    <!-- Default Items -->
+                    <div class="item-card">
+                        <div class="card-image-box">
+                            <span class="tag-badge">GALERI</span>
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=60" alt="Retro Hardware">
+                        </div>
+                        <h3 class="card-title">Retroware_PC.sys</h3>
+                        <p class="card-desc">Sisa-sisa kejayaan setup komputer era 1999 yang menjadi saksi bisu fenomena Y2K bug.</p>
+                        <div class="card-actions">
+                            <span class="card-time">SYSTEM</span>
+                        </div>
+                    </div>
+                    <div class="item-card">
+                        <div class="card-image-box">
+                            <span class="tag-badge">GALERI</span>
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=60" alt="Gaming Vibe">
+                        </div>
+                        <h3 class="card-title">Arcade_Sunset.gif</h3>
+                        <p class="card-desc">Cahaya neon redup dari pusat permainan arcade di pertengahan malam musim panas.</p>
+                        <div class="card-actions">
+                            <span class="card-time">SYSTEM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Array untuk menyimpan data foto kustom yang diunggah user
+        let customImages = [];
+        // Menyimpan penampung Base64 dari foto-foto yang dipilih saat ini
+        let selectedBase64Images = [];
+
+        // Inisialisasi awal saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            // Muat data dari localStorage jika ada
+            if (localStorage.getItem('rapwelwol_media')) {
+                customImages = JSON.parse(localStorage.getItem('rapwelwol_media'));
+                renderCustomContent();
+            }
+        });
+
+        // 1. SISTEM PERPINDAHAN WINDOWS TAB
+        function openWindow(windowId, tabElement) {
+            // Sembunyikan semua window panel
+            const windows = document.querySelectorAll('.y2k-window');
+            windows.forEach(win => win.classList.remove('active'));
+
+            // Hapus kelas aktif dari semua tab navigasi
+            const tabs = document.querySelectorAll('.nav-card');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Tampilkan panel yang dituju
+            document.getElementById(windowId).classList.add('active');
+            
+            // Berikan kelas aktif pada tab yang diklik
+            tabElement.classList.add('active');
+        }
+
+        // 2. PREVIEW BEBERAPA FOTO SEBELUM DIUPLOAD (MULTI-IMAGE PREVIEW)
+        function previewImages(event) {
+            const container = document.getElementById('previewContainer');
+            container.innerHTML = ''; // Reset wadah pratinjau
+            selectedBase64Images = []; // Bersihkan cache gambar sebelumnya
+            
+            const files = event.target.files;
+            
+            if (files.length === 0) {
+                container.innerHTML = '<span style="color:#888; font-size:0.85rem;">Belum ada foto terpilih...</span>';
+                return;
+            }
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Buat elemen preview gambar mini
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'thumb';
+                    container.appendChild(img);
+
+                    // Simpan data Base64 ke dalam array penampung sementara
+                    selectedBase64Images.push(e.target.result);
+                }
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // 3. PROSES SUBMIT & INJEKSI FOTO KE LAYOUT TERPILIH
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('photoTitle').value;
+            const desc = document.getElementById('photoDesc').value;
+            const category = document.getElementById('photoCategory').value;
+
+            if (selectedBase64Images.length === 0) {
+                alert("Harap pilih minimal satu file foto!");
+                return;
+            }
+
+            // Tambahkan setiap gambar yang diupload ke daftar data kustom
+            selectedBase64Images.forEach((base64Data, index) => {
+                const newItem = {
+                    id: 'media_' + Date.now() + '_' + index,
+                    title: selectedBase64Images.length > 1 ? `${title} (Part ${index + 1})` : title,
+                    desc: desc,
+                    category: category,
+                    imageUrl: base64Data,
+                    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                };
+                customImages.push(newItem);
+            });
+
+            // Simpan ke localStorage
+            localStorage.setItem('rapwelwol_media', JSON.stringify(customImages));
+
+            // Refresh renderan visual di halaman web
+            renderCustomContent();
+
+            // Reset form input setelah injeksi sukses
+            document.getElementById('uploadForm').reset();
+            document.getElementById('previewContainer').innerHTML = '<span style="color:#888; font-size:0.85rem;">Belum ada foto terpilih...</span>';
+            selectedBase64Images = [];
+
+            // Pindahkan tab secara otomatis ke halaman yang sesuai
+            setTimeout(() => {
+                if (category === 'galeri') {
+                    openWindow('gallery-panel', document.querySelectorAll('.nav-card')[3]);
+                } else {
+                    openWindow('menu-panel', document.querySelectorAll('.nav-card')[1]);
+                }
+                showNotification("Sistem berhasil menginjeksi foto baru!");
+            }, 400);
+        }
+
+        // 4. RENDERING ELEMEN VISUAL DARI LOCAL STORAGE
+        function renderCustomContent() {
+            // Seleksi penampung showcase
+            const menuShowcase = document.getElementById('menuShowcase');
+            const galleryShowcase = document.getElementById('galleryShowcase');
+
+            // Kembalikan isi showcase ke elemen default bawaan (Reset render)
+            menuShowcase.innerHTML = `
+                <div class="item-card">
+                    <div class="card-image-box">
+                        <span class="tag-badge">MAKANAN</span>
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60" alt="Pixel Pizza">
+                    </div>
+                    <h3 class="card-title">Mega-Byte Pizza</h3>
+                    <p class="card-desc">Pizza tipis garing dengan lelehan keju mozzarella setebal 8-bit, lengkap dengan pepperoni laser.</p>
+                    <div class="card-actions">
+                        <span class="card-time">Rp 45.000</span>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="card-image-box">
+                        <span class="tag-badge">MINUMAN</span>
+                        <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&auto=format&fit=crop&q=60" alt="Cyber Soda">
+                    </div>
+                    <h3 class="card-title">Liquid Neon Soda</h3>
+                    <p class="card-desc">Soda biru menyala rasa blueberry asam dengan taburan glitter gula yang bisa menyala di dalam kegelapan.</p>
+                    <div class="card-actions">
+                        <span class="card-time">Rp 25.000</span>
+                    </div>
+                </div>
+            `;
+
+            galleryShowcase.innerHTML = `
+                <div class="item-card">
+                    <div class="card-image-box">
+                        <span class="tag-badge">GALERI</span>
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&auto=format&fit=crop&q=60" alt="Retro Hardware">
+                    </div>
+                    <h3 class="card-title">Retroware_PC.sys</h3>
+                    <p class="card-desc">Sisa-sisa kejayaan setup komputer era 1999 yang menjadi saksi bisu fenomena Y2K bug.</p>
+                    <div class="card-actions">
+                        <span class="card-time">SYSTEM</span>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="card-image-box">
+                        <span class="tag-badge">GALERI</span>
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=60" alt="Gaming Vibe">
+                    </div>
+                    <h3 class="card-title">Arcade_Sunset.gif</h3>
+                    <p class="card-desc">Cahaya neon redup dari pusat permainan arcade di pertengahan malam musim panas.</p>
+                    <div class="card-actions">
+                        <span class="card-time">SYSTEM</span>
+                    </div>
+                </div>
+            `;
+
+            // Loop dan tampilkan foto custom unggahan user
+            customImages.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
+
+                const categoryLabel = item.category.toUpperCase();
+
+                card.innerHTML = `
+                    <div class="card-image-box">
+                        <span class="tag-badge" style="background: var(--primary-pink); color: #fff;">${categoryLabel}</span>
+                        <img src="${item.imageUrl}" alt="${item.title}">
+                    </div>
+                    <h3 class="card-title">${item.title}</h3>
+                    <p class="card-desc">${item.desc}</p>
+                    <div class="card-actions">
+                        <span class="card-time">📟 ${item.timestamp}</span>
+                        <button class="btn-delete" onclick="deleteItem('${item.id}')"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+
+                if (item.category === 'galeri') {
+                    galleryShowcase.appendChild(card);
+                } else {
+                    menuShowcase.appendChild(card);
+                }
+            });
+        }
+
+        // 5. HAPUS KONTEN DENGAN AMAN
+        function deleteItem(itemId) {
+            if (confirm("Apakah kamu yakin ingin menghapus item visual ini?")) {
+                customImages = customImages.filter(item => item.id !== itemId);
+                localStorage.setItem('rapwelwol_media', JSON.stringify(customImages));
+                renderCustomContent();
+                showNotification("Item berhasil dihapus dari sistem!");
+            }
+        }
+
+        // 6. AUDIO PLAYER MOCK FUNCTIONALITY (MENGHIDUPKAN ANIMASI)
+        let isPlaying = false;
+        function togglePlay() {
+            const disc = document.getElementById('disc');
+            const songTitle = document.getElementById('songTitle');
+            
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                disc.classList.add('playing');
+                songTitle.innerHTML = 'Now Streaming: LoFi_90s_Wave.mp3 (PLAYING)';
+                showNotification("Audio dimulai: LoFi_90s_Wave.mp3");
+            } else {
+                disc.classList.remove('playing');
+                songTitle.innerHTML = 'Now Streaming: LoFi_90s_Wave.mp3 (PAUSED)';
+            }
+        }
+
+        // 7. POPUP NOTIFICATION CONTROLLER
+        function showNotification(message) {
+            const notif = document.getElementById('sysNotif');
+            document.getElementById('notifMsg').innerText = message;
+            
+            notif.style.display = 'flex';
+            
+            setTimeout(() => {
+                notif.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+```eof
+
+Website **rapwelwol** bertema retro-modern/Y2K ini telah berhasil dirakit dalam satu file HTML yang super responsif! Semua fitur utama—mulai dari uploader multi-foto, persistensi memori lokal, navigasi tab estetik, hingga dekorasi visual interaktif ala tahun 2000-an—siap dijalankan langsung di perangkatmu.
